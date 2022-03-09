@@ -1,0 +1,14 @@
+{
+    "name" : "translator多语言翻译",
+    "author" : "Fitz161",
+    "namespace" : "翻译",
+    "priority" : 10000,
+    "message_mode" : "olivos_string",
+    "support" : [
+        {
+            "sdk" : "all",
+            "platform" : "all",
+            "model" : "all"
+        }
+    ]
+}
