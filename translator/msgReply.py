@@ -39,8 +39,7 @@ def get_translate_result(plugin_event, _):
     type, text = message[:message.find(' ')], message[message.find(' ')+1:]
     dst_type = LANGUAGE_DICT.get(type)
     if not text or not dst_type:
-        plugin_event.reply(ERROR_MSG)
-        return
+        return ERROR_MSG
 
     data = concat_post_data(text, dst_type)
     result = request_post(data)
@@ -128,6 +127,7 @@ def unity_init(plugin_event, Proc):
 def unity_reply(plugin_event, Proc):
     message = plugin_event.data.message
     if message[:2] not in ['翻译'] or len(message) < 3: return
+    if not BAIDU_TRANS_ID or not BAIDU_TRANS_KEY: return
     if message[2] in ['成', '为']:
         reply_msg = command_dict.get(message[2])(plugin_event, Proc)
         plugin_event.reply(reply_msg[:MAX_SEND_LENGTH])
